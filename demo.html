@@ -1,0 +1,45 @@
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CoWSwap Widget demo</title>
+  <script src="https://cdn.jsdelivr.net/npm/@cowprotocol/widget-lib@latest/index.iife.js"></script>
+</head>
+<body style="display: flex; align-items: center; justify-content: center; background-color: #06172e; padding: 10px;">
+  <div id="app"></div>
+  <script>
+    //  Fill this form https://cowprotocol.typeform.com/to/rONXaxHV once you pick your "appCode"
+    const params = {
+        "appCode": "My Cool App", // Name of your app (max 50 characters)
+        "width": "450px", // Width in pixels (or 100% to use all available space)
+        "height": "640px",
+        "chainId": 1, // 1 (Mainnet), 100 (Gnosis), 11155111 (Sepolia)
+        "tokenLists": [ // All default enabled token lists. Also see https://tokenlists.org
+            "https://files.cow.fi/tokens/CoinGecko.json",
+            "https://files.cow.fi/tokens/CowSwap.json"
+        ],
+        "tradeType": "swap", // swap, limit or advanced
+        "sell": { // Sell token. Optionally add amount for sell orders
+            "asset": "USDC",
+            "amount": "100000"
+        },
+        "buy": { // Buy token. Optionally add amount for buy orders
+            "asset": "COW",
+            "amount": "0"
+        },
+        "enabledTradeTypes": [ // swap, limit and/or advanced
+            "swap",
+            "limit",
+            "advanced"
+        ],
+        "theme": "light", // light/dark or provide your own color palette
+        "standaloneMode": true,
+        "disableToastMessages": false,
+        "provider": window.ethereum // Ethereum EIP-1193 provider. For a quick test, you can pass `window.ethereum`, but consider using something like https://web3modal.com
+    }
+
+    cowSwapWidget.cowSwapWidget(document.getElementById("app"), params)
+  </script>
+</body>
+</html>
+  
